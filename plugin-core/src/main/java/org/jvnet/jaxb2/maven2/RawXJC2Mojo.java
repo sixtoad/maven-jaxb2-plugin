@@ -737,7 +737,7 @@ public abstract class RawXJC2Mojo<O> extends AbstractXJC2Mojo<O> {
 		final List<Artifact> compileScopeArtifacts = new ArrayList<Artifact>(projectArtifacts.size());
 		final ArtifactFilter filter = new ScopeArtifactFilter(DefaultArtifact.SCOPE_COMPILE);
 		for (Artifact artifact : projectArtifacts) {
-			if (filter.include(artifact)) {
+			if (filter.include(artifact) && !"pom".equals(artifact.getType())) {
 				compileScopeArtifacts.add(artifact);
 			}
 		}
